@@ -1,0 +1,39 @@
+<h1 id="tableLabel">Search Dad jokes</h1>
+
+
+
+<p>Search here</p>
+
+<input type="text" [(ngModel)]="keyword" placeholder="Search Dad jokes" />
+
+<button class="btn btn-primary" (click)="getJoke()">Shoot</button>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="!error">
+    <thead>
+        <tr align="center">
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr align="center" *ngIf="results.shortJokes?.length>0">
+            <strong>Short jokes</strong>
+        </tr>
+        <tr *ngFor="let result of results.shortJokes" align="center">
+            <td>{{ result.joke }}</td>
+        </tr>
+        <tr align="center" *ngIf="results.mediumJokes?.length>0">
+            <strong>Medium jokes</strong>
+        </tr>
+        <tr *ngFor="let result of results.mediumJokes" align="center">
+            <td>{{ result.joke }}</td>
+        </tr>
+        <tr align="center" *ngIf="results.longJokes?.length>0">
+            <strong>Long jokes</strong>
+        </tr>
+        <tr *ngFor="let result of results.longJokes" align="center">
+            <td>{{ result.joke }}</td>
+        </tr>
+    </tbody>
+</table>
+<h1 *ngIf="error"> No Data Present</h1>
+
